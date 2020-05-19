@@ -24,7 +24,7 @@ namespace Innergy
 
             var service = new ParseDataService();
 
-            var result=service.ParseData(input);
+            var result = service.ParseData(input);
 
             Console.Write(result);
 

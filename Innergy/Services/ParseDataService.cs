@@ -17,7 +17,7 @@ namespace Innergy.Services
             return result;
         }
 
-        private string PrepareWarehousesState(List<Material> correctMaterials)
+        public string PrepareWarehousesState(List<Material> correctMaterials)
         {
             var warehousesState = GetWarehousesStates(correctMaterials);
 
@@ -28,19 +28,36 @@ namespace Innergy.Services
             return result;
         }
 
+        public List<Material> GetCorrectMaterials(string input)
+        {
+            var correctMaterials = new List<Material>();
+            var lines = input.Split('\n');
+
+            foreach (var line in lines)
+            {
+                var material = GetMaterial(line);
+                if (material != null)
+                {
+                    correctMaterials.Add(material);
+                }
+            }
+
+            return correctMaterials;
+        }
+
         private string PrepareWarehousesStateString(List<WarehouseState> warehousesState)
         {
             var sb = new StringBuilder();
 
-            foreach(var warehouseState in warehousesState)
+            foreach (var warehouseState in warehousesState)
             {
                 sb.AppendLine(warehouseState.Name + " (total  " + warehouseState.TotalAmount + ")");
-                foreach(var materialState in warehouseState.MaterialStates)
+                foreach (var materialState in warehouseState.MaterialStates)
                 {
                     sb.AppendLine(materialState.Key + ": " + materialState.Value);
                 }
 
-                if(!warehouseState.Equals(warehousesState.Last()))
+                if (!warehouseState.Equals(warehousesState.Last()))
                 {
                     sb.AppendLine();
                 }
@@ -51,13 +68,13 @@ namespace Innergy.Services
 
         private List<WarehouseState> OrderWarehousesStates(List<WarehouseState> warehousesState)
         {
-            warehousesState = warehousesState.OrderByDescending(x => x.TotalAmount).ThenByDescending(x=> x.Name).ToList();
+            warehousesState = warehousesState.OrderByDescending(x => x.TotalAmount).ThenByDescending(x => x.Name).ToList();
 
-            foreach(var warehouseState in warehousesState)
+            foreach (var warehouseState in warehousesState)
             {
                 var items = from materialState in warehouseState.MaterialStates
-                                                orderby materialState.Key ascending
-                                                select materialState;
+                            orderby materialState.Key ascending
+                            select materialState;
                 warehouseState.MaterialStates = items.ToDictionary((keyItem) => keyItem.Key, (valueItem) => valueItem.Value);
             }
 
@@ -102,24 +119,6 @@ namespace Innergy.Services
             }
 
             return result;
-        }
-
-        private List<Material> GetCorrectMaterials(string input)
-        {
-            var correctMaterials = new List<Material>();
-            var lines = input.Split('\n');
-
-            foreach (var line in lines)
-            {
-                var material = GetMaterial(line);
-                if (material != null)
-                {
-                    correctMaterials.Add(material);
-                }
-            }
-
-
-            return correctMaterials;
         }
 
         private Material GetMaterial(string line)
