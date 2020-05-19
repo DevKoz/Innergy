@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30028.174
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innergy", "Innergy\Innergy.csproj", "{A52680C9-E056-4093-A40E-91426FFFD7CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A52680C9-E056-4093-A40E-91426FFFD7CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A52680C9-E056-4093-A40E-91426FFFD7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A52680C9-E056-4093-A40E-91426FFFD7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A52680C9-E056-4093-A40E-91426FFFD7CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BC9CD16-AA23-4F07-BA60-62B014BD632F}
+	EndGlobalSection
+EndGlobal
